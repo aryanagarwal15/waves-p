@@ -10,7 +10,7 @@ module.exports = function(app) {
 
 
 app.get('/', (req, res) => {
-    const file = path.resolve(__dirname, '../frontend/templates/index.html')
+    const file = path.resolve(__dirname, 'frontend/templates/index.html')
     res.sendFile(file)
 })
 
@@ -18,7 +18,7 @@ app.get('/event/:eventname', (req, res, next) => {
     
     const eventname = req.params.eventname
 
-    const file = path.resolve(__dirname, `../frontend/templates/events/${eventname}.html`)
+    const file = path.resolve(__dirname, `frontend/templates/events/${eventname}.html`)
     if(fs.existsSync(file)) {
         return res.sendFile(file)
     }
@@ -30,7 +30,7 @@ app.get('/:page', (req, res, next) => {
 
     if(page == "index" || page == "404") return next()
 
-    const file = path.resolve(__dirname, `../frontend/templates/${page}.html`)
+    const file = path.resolve(__dirname, `frontend/templates/${page}.html`)
     if(fs.existsSync(file)) {
         return res.sendFile(file)
     }
