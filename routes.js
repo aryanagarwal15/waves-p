@@ -1,6 +1,7 @@
 const path = require('path')
 const BITSEvent = require('./models/BITSEvent')
 const fs = require('fs')
+const Message = require('./models/Messages')
 
 function customValidation(name, email, college, mobile, event) {
     return true // implement this
@@ -42,19 +43,21 @@ app.post('/event/:eventname', async (req, res) => {
     if(validevents.indexOf(event) == -1) return res.json({status: 'error'})
 
     debugger
-    const { name, email, collegename, mobile } = req.body
+    const { name, email, collegename, mobile, CITYorEVENT } = req.body
     if(!name || !email || !collegename || !mobile) {
         return res.status(500).json({ status: 'error', message: 'All fields required' })
     }
 
     if(customValidation(name, email, collegename, mobile, event)) { // TODO: Implement this validation
-        const result = await BITSEvent.addEntry(name, email, collegename, mobile, event)
+        const result = await BITSEvent.addEntry(name, email, collegename, mobile, event, CITYorEVENT)
         if(result.status == 'error') return res.status(500).json({ status: 'error', message: result.message })
         return res.redirect('/entrySuccess')
     }
 }) 
-
-
-
-
+app.post('/contact-us', async (req, res) => {
+    const {name, email, subject, message} = req.body
+    const result1 = await Message.addEntry({name, email, subject, message})
+    if(result1.status == 'error') return res.status(500).json({ status: 'error', message: result1.message })
+        return res.redirect('/entrySuccess')
+})
 }
