@@ -130,3 +130,11 @@ body{
     font-size:4vh;
     color:white;
 }
+.social-sidebar a{
+    float: left;
+}
+.social-sidebar{
+    position: absolute;
+    bottom: 0;
+left: 23%;
+}
