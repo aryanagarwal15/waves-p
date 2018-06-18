@@ -116,6 +116,14 @@ body{
     position:fixed;
     bottom:40px;
 }
+
+@media screen and (max-width:740px) {
+    .social-group {
+        margin-top:5vh;
+        position:relative;
+        bottom:19px;
+    }
+}
 .social-icons {
     margin-left:0.1vw;
     float:right;
