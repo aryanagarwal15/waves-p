@@ -2,6 +2,7 @@ const path = require('path')
 const BITSEvent = require('./models/BITSEvent')
 const fs = require('fs')
 const Message = require('./models/Messages')
+const Inverse = require('./models/Inverse')
 
 function customValidation(name, email, college, mobile, event) {
     return true // implement this
@@ -39,7 +40,7 @@ app.get('/:page', (req, res, next) => {
 })
 app.post('/event/:eventname', async (req, res) => {
     const event = req.params.eventname
-    const validevents = ['irshad', 'smtf', 'inverse', 'fest-registration']
+    const validevents = ['irshad', 'smtf', 'fest-registration']
     if(validevents.indexOf(event) == -1) return res.json({status: 'error'})
 
     debugger
@@ -54,6 +55,20 @@ app.post('/event/:eventname', async (req, res) => {
         return res.redirect('/entrySuccess')
     }
 }) 
+app.post('/inverse', async (req, res) => {
+    
+    const { name, email, collegename, mobile, CITYorEVENT, poem } = req.body
+    if(!name || !email || !collegename || !mobile) {
+        return res.status(500).json({ status: 'error', message: 'All fields required' })
+    }
+
+    if(customValidation(name, email, collegename, mobile)) { // TODO: Implement this validation
+        const result = await Inverse.addEntry(name, email, collegename, mobile, CITYorEVENT, poem)
+        if(result.status == 'error') return res.status(500).json({ status: 'error', message: result.message })
+        return res.redirect('/entrySuccess')
+    }
+})
+
 app.post('/contact-us', async (req, res) => {
     const {name, email, subject, message} = req.body
     const result1 = await Message.addEntry({name, email, subject, message})
