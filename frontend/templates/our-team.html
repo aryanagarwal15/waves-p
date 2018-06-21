@@ -17,12 +17,13 @@
             </head>
 
             <body>
-<div id="mySidenav" class="sidenav">
-  <a href="/" class="logobtn"><i class="fa fa-home" style="font-size: 25px; padding-top: 1vh;"></i></a>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/about-page">About</a>
-  <a href="/contact-us">Contact Us</a>
+       <div id="mySidenav" class="sidenav">
+        <a href="/" class="logobtn"><i class="fa fa-home" style="font-size: 25px; padding-top: 1vh;"></i></a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/about-page">About</a>
+        <a href="/contact-us">Contact Us</a>
     <a href="/our-team">Contact List</a>
+
   <p>Event Registration:</p>
   <a href="/event/smtf">SMTF</a>
   <a href="/event/irshad">Irshad</a>
@@ -44,8 +45,31 @@
 
         </div>
     </div>
+
+        <p>Event Registration:</p>
+        <a href="/event/smtf">SMTF</a>
+        <a href="/event/irshad">Irshad</a>
+        <a href="/event/inverse">Inverse</a>      
+
+            <div class="social-sidebar">
+            
+                    <a class="p-2 fa-lg fb-ic" href="https://www.facebook.com/bitswaves/">
+                          <i class="fa fa-facebook"></i>
+                    </a>
+                        <!-- Twitter -->
+                    <a class="p-2 fa-lg tw-ic" href="https://twitter.com/bitswaves?lang=en">
+                          <i class="fa fa-twitter"> </i>
+                    </a>
+                        <!-- Instagram -->
+                    <a class="p-2 fa-lg ins-ic" href="https://www.instagram.com/wavesbits/">
+                          <i class="fa fa-instagram"> </i>
+                    </a>
+                
+            </div> 
+        </div>
+
             <!-- Start your project here-->
-            <a href="#" class="nav-but" data-activates="slide-out" onclick="openNav()"><i class="fa fa-bars" style="font-size: 25px; padding-top: 2vh;"></i></a>
+            <a href="#" class="nav-but" data-activates="slide-out" onclick="openNav()"><i class="fa fa-bars" style="font-size: 25px; padding-top: 1vh;"></i></a>
                 <!-- Start your project here-->
 
                 <!-- Section: Team v.1 -->
@@ -53,7 +77,9 @@
             <section class="team-section text-center my-5">
 
               <!-- Section heading -->
+
               <h2 class="h1-responsive font-weight-bold my-5" style="color: #fff">Our Team</h2>
+
 
 
               <!-- Grid row -->
@@ -129,7 +155,6 @@
 
                   <ul class="list-unstyled mb-0">
 
-
                   </ul>
                 </div>
                 <!-- Grid column -->
@@ -142,7 +167,6 @@
                   <p class="text-uppercase"><strong>Waves Head</strong></p>
 
                   <ul class="list-unstyled mb-0">
-
 
                   </ul>
                 </div>
@@ -176,7 +200,6 @@
 
                   <ul class="list-unstyled mb-0">
 
-
                   </ul>
                 </div>
                 <!-- Grid column -->
@@ -195,7 +218,6 @@
 
                   <ul class="list-unstyled mb-0">
 
-
                   </ul>
                 </div>
                 <!-- Grid column -->
@@ -208,7 +230,6 @@
                   <p class="text-uppercase"><strong>Waves Head</strong></p>
 
                   <ul class="list-unstyled mb-0">
-
 
                   </ul>
                 </div>
@@ -412,7 +433,7 @@
             <!-- Section: Team v.1 -->
 
                 <!-- /Start your project here-->
-
+                     
                 <!-- SCRIPTS -->
                 <!-- JQuery -->
                 <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
@@ -423,7 +444,19 @@
                 <!-- MDB core JavaScript -->
                 <script type="text/javascript" src="/js/mdb.min.js"></script>
                 <script type="text/javascript">
-            /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a #f0f0f0 background color to body */
+            /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+
+            if(document.documentElement.clientWidth < 740) {
+              //console.log("Mobile detected due to the width being" + document.documentElement.clientWidth);
+              function openNav() {
+                document.getElementById("mySidenav").style.width = "100%";
+              }
+
+              function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+              }
+            }
+            
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";

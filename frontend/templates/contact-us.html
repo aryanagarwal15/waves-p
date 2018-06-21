@@ -23,6 +23,13 @@
         height: 60vh;
       }
 
+      html,
+      body,
+      header,
+      .jarallax {
+        height: 50vh;
+      }
+
       @media (max-width: 740px) {
         html,
         body,
@@ -61,19 +68,13 @@
           }
 
 
-      html,
-      body,
-      header,
-      .jarallax {
-        height: 50vh;
-      }
     </style>
 </head>
 
 <body style="background: #fff">
 
   <header>
-  <div id="mySidenav" class="sidenav">
+       <div id="mySidenav" class="sidenav">
         <a href="/" class="logobtn"><i class="fa fa-home" style="font-size: 25px; padding-top: 1vh;"></i></a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="/about-page">About</a>
@@ -82,6 +83,7 @@
         <p>Event Registration:</p>
         <a href="/event/smtf">SMTF</a>
         <a href="/event/irshad">Irshad</a>
+
         <a href="/event/inverse">Inverse</a>
 
         <div class="social-sidebar">
@@ -102,8 +104,38 @@
     </div>
 
 <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('img/contact-back.png');background-attachment: fixed;background-repeat: no-repeat;background-size: cover;background-position: center right;">
+
+        <a href="/event/inverse">Inverse</a>      
+
+            <div class="social-sidebar">
+            
+                    <a class="p-2 fa-lg fb-ic" href="https://www.facebook.com/bitswaves/">
+                          <i class="fa fa-facebook"></i>
+                    </a>
+                        <!-- Twitter -->
+                    <a class="p-2 fa-lg tw-ic" href="https://twitter.com/bitswaves?lang=en">
+                          <i class="fa fa-twitter"> </i>
+                    </a>
+                        <!-- Instagram -->
+                    <a class="p-2 fa-lg ins-ic" href="https://www.instagram.com/wavesbits/">
+                          <i class="fa fa-instagram"> </i>
+                    </a>
+                
+            </div> 
+        </div>
+
+    
+<div class="view jarallax" data-jarallax='{"speed": 0.2}' style="
+                                                        background-image: url('img/contact-back.png');
+                                                        background-attachment: fixed;
+                                                        background-repeat: no-repeat;
+                                                        background-size: cover;
+                                                        background-position: center right;
+            
+                                                        /* ...all other CSS... */">
+
         <div class="mask rgba-green-light">
-          <a href="#" class="nav-but" data-activates="slide-out" onclick="openNav()"><i class="fa fa-bars" style="font-size: 25px; padding-top: 2vh;"></i></a>
+          <a href="#" class="nav-but" data-activates="slide-out" onclick="openNav()"><i class="fa fa-bars" style="font-size: 25px; padding-top: 1vh;"></i></a>
             <div class="container flex-center text-center">
               <div class="row mt-5">
                 <div class="col-md-12 wow fadeIn mb-3">
@@ -159,7 +191,7 @@
           <div class="col-md-6 mb-4">
 
             <!-- Default form contact -->
-            <form method="post" action="/contact-us">
+            <form method="post" action="/contactform">
                 <p class="h4 text-center mb-4">Write to us</p>
 
                 <!-- Default input name -->
@@ -202,6 +234,7 @@
     </div>
   </main>
   <!--Main layout-->
+  
 
 
     <!-- SCRIPTS -->
@@ -220,6 +253,19 @@
   </script>
     <script type="text/javascript">
             /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+  
+    if(document.documentElement.clientWidth < 740) {
+      //console.log("Mobile detected due to the width being" + document.documentElement.clientWidth);
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    }
+
+
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
@@ -232,7 +278,8 @@
         document.getElementById("main").style.marginLeft = "0";
         document.body.style.backgroundColor = "white";
     }
-            </script>
+    </script>
+    
 </body>
 
 </html>

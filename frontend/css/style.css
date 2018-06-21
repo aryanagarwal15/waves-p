@@ -10,6 +10,22 @@ body{
     background-attachment: fixed;
 
 }
+/*The logo container*/
+.logo {
+    margin-top:20vh;
+}
+/* Fixing the logo sizing-issue*/
+#logoWaves {
+    height:15vw;
+}
+@media screen and (max-width: 740px) {
+    #logoWaves {
+        height:40vw;
+    }
+
+
+
+}
 .btn-rounded{
 	border-radius: 20px;
 }
@@ -21,7 +37,7 @@ body{
     z-index: 2; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #eee; /* Black*/
+    background-color:#eee;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -33,6 +49,7 @@ body{
     text-decoration: none;
     font-size: 25px;
     color: #818181;
+    font-weight: bold;
     display: block;
     transition: 0.3s;
 }
@@ -81,15 +98,37 @@ body{
 }
 .nav-but{
 	padding: 20px;
-	color: #fff
+	color: #fff;
 }
 .nav-but:hover{
-	color: #f0f0f0
+	color: #f0f0f0;
+}
+.nav-but i {
+    position: fixed;
 }
 .page-footer {
   background-color: #1C2331; }
 .card{
     min-width: 35vw;
+}
+.social-group {
+    margin-top:5vh;
+    position:fixed;
+    bottom:40px;
+}
+
+@media screen and (max-width:740px) {
+    .social-group {
+        margin-top:5vh;
+        position:absolute;
+        bottom:19px;
+    }
+}
+.social-icons {
+    margin-left:0.1vw;
+    float:right;
+    font-size:4vh;
+    color:white;
 }
 .social-sidebar a{
     float: left;
