@@ -1,14 +1,39 @@
 body{
-	 background-image: url("../img/back.jpg");
-	  /* Full height */
-    height: 100%; 
+     /*background-image: url("../img/back.jpg");*/
+      /* Full height */
+    height:100vh;  
+    background: #c21500;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom,#FF512F,#f12711,#8e0e00,#000 85%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom,#FF512F,#f12711,#8e0e00,#000 85%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#EB5757',GradientType=0 );
+    background-attachment: fixed;   
+}
+.dropdown-menu {
+    background-color:#000;
+
+}
+.navbar .dropdown-menu a {
+    color:white !important;
+}
+.navbar .dropdown-menu a:hover {
+    background-color:#000 !important;
+}
+
+.soc-grp {
+    position: fixed;
+    right:4px;
+    bottom:4px;
+}
+@media screen and (max-width: 768px) {
+    .soc-grp {
+        position:fixed;
+        left:9%;
+    }
+}
+.soc-grp a:hover {
+    color:white;
 }
 /*The logo container*/
 .logo {
@@ -16,7 +41,7 @@ body{
 }
 /* Fixing the logo sizing-issue*/
 #logoWaves {
-    height:15vw;
+    height:24vw;
 }
 @media screen and (max-width: 740px) {
     #logoWaves {
@@ -26,8 +51,11 @@ body{
 
 
 }
+.nav-link {
+    outline: 0;
+}
 .btn-rounded{
-	border-radius: 20px;
+    border-radius: 20px;
 }
 /* The side navigation menu */
 .sidenav {
@@ -37,7 +65,7 @@ body{
     z-index: 2; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color:#eee;
+    background:black;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -48,7 +76,7 @@ body{
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     font-weight: bold;
     display: block;
     transition: 0.3s;
@@ -56,7 +84,7 @@ body{
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-    color: #0e0e0e;
+    color: rgba(255,255,255,0.2);
 }
 .sidenav p {
     padding: 8px 8px 8px 32px;
@@ -97,11 +125,11 @@ body{
     .sidenav a {font-size: 18px;}
 }
 .nav-but{
-	padding: 20px;
-	color: #fff;
+    padding: 20px;
+    color: #fff;
 }
 .nav-but:hover{
-	color: #f0f0f0;
+    color: #f0f0f0;
 }
 .nav-but i {
     position: fixed;
@@ -120,12 +148,11 @@ body{
 @media screen and (max-width:740px) {
     .social-group {
         margin-top:5vh;
-        position:absolute;
+        position:fixed;
         bottom:19px;
     }
 }
 .social-icons {
-    margin-left:0.1vw;
     float:right;
     font-size:4vh;
     color:white;
@@ -136,5 +163,48 @@ body{
 .social-sidebar{
     position: absolute;
     bottom: 0;
-left: 23%;
+    left: 23%;
 }
+
+/*Preloading animations*/
+#pre-loader {
+    margin:0;
+    padding:0;
+    width:100%;
+    background:transparent;
+    height:90vh;
+    overflow: hidden;
+}
+.loader{
+    height: 300px;
+    width: 300px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+}
+
+.petal{
+    height: 94%;
+    width: 94%;
+    background: white;
+    border-radius:30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -47% 0 0 -47%;
+}
+
+
+.black{ 
+    background: black;  
+    animation: spin 6s infinite linear; 
+}
+
+@keyframes spin{
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(360deg); }  
+}
+/*End of Preloading animations*/
+
+
