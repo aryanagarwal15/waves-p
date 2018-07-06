@@ -1,14 +1,45 @@
+html {
+	height:100%;
+}
 body{
-	 background-image: url("../img/back.jpg");
-	  /* Full height */
-    height: 100%; 
+     /*background-image: url("../img/back.jpg");*/
+      /* Full height */
+    background: #c21500 fixed;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom,#FF512F,#f12711,#8e0e00,#000 85%) fixed;  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom,#FF512F,#f12711,#8e0e00,#000 85%) fixed; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#EB5757',GradientType=0 );
+/*     background-attachment: fixed;    */
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover !important;
+}
+.dropdown-menu {
+    background-color:#000;
+
+}
+.navbar .dropdown-menu a {
+    color:white !important;
+}
+.navbar .dropdown-menu a:hover {
+    background-color:#000 !important;
+}
+
+.soc-grp {
+    position: fixed;
+    right:4px;
+    bottom:4px;
+}
+@media screen and (max-width: 768px) {
+    .soc-grp {
+        position:fixed;
+        left:9%;
+    }
+}
+.soc-grp a:hover {
+    color:white;
 }
 /*The logo container*/
 .logo {
