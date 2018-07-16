@@ -22,11 +22,14 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="/about-page">About</a>
         <a href="/contact-us">Contact Us</a>
-    <a href="/our-team">Contact List</a>
-        <p>Event Registration:</p>
-        <a href="/event/smtf">SMTF</a>
-        <a href="/event/irshad">Irshad</a>
-        <a href="/event/inverse">Inverse</a>      
+    <a href="/our-team">Our Team</a>
+        <a href="/sponsors">Sponsors</a>
+    <a href="/event/csr">CSR</a>      
+    <p>Event Registration:</p>
+    <a href="/event/smtf">SMTF</a>
+    <a href="/event/irshad">Irshad</a>
+    <a href="/event/inverse">InVerse</a>
+
 
             <div class="social-sidebar">
             
@@ -56,8 +59,10 @@
         <div class="card-body">
 
             <!-- Material form register -->
-            <form method="post" action="/event/inverse">
-                <p class="h4 text-center py-4">        Registration: Inverse        </p>
+
+            <form method="post" action="/inverse">
+                <p class="h4 text-center py-4">        Registration: InVerse        </p>
+
 
                 <!-- Material input text -->
                  <div class="md-form">
@@ -86,21 +91,19 @@
                     <input type="text" id="materialFormCardNameEx" name="collegename" class="form-control">
                     <label for="materialFormCardPasswordEx" class="font-weight-light">College Name</label>
                 </div>
-
-                
-                <!--Textarea with icon prefix-->
-                <div class="md-form">
-                    <i class="fa fa-pencil prefix grey-text"></i>
-                    <label for="textareaPrefix" class="font-weight-light">Your Poem</label>
-                    <textarea type="text" id="textareaPrefix" class="md-textarea md-textarea-auto form-control" rows="3"></textarea>
-                 </div>
                   
                 <div class="md-form">
                     <i class="fa fa-building prefix grey-text"></i>
                     <input type="text" id="materialFormCardNameEx" name="CITYorEVENT" class="form-control">
                     <label for="materialFormCardPasswordEx" class="font-weight-light">City</label>
-
                 </div>
+
+                <!--Textarea with icon prefix-->
+                <div class="md-form">
+                    <i class="fa fa-pencil prefix grey-text"></i>
+                    <label for="textareaPrefix" class="font-weight-light">Your Poem</label>
+                    <textarea type="text" id="textareaPrefix" class="md-textarea md-textarea-auto form-control" rows="3" name="poem"></textarea>
+                 </div>
 
                 <div class="text-center py-4 mt-3">
                     <button class="btn btn-cyan" type="submit">Register</button>
