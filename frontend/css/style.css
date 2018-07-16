@@ -10,6 +10,10 @@ body{
     background-attachment: fixed;
 
 }
+.center-align {
+	margin-left:auto;
+	margin-right:auto;
+}
 /*The logo container*/
 .logo {
     margin-top:20vh;
