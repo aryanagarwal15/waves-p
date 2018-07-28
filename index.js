@@ -7,16 +7,16 @@ const bodyParser = require('body-parser')
 
 ;(async function() {
 
-    const mongoPort = process.env.NODE_ENV === 'production' ? 18510 : 18510
+    const mongoPort = process.env.NODE_ENV === 'production' ? 27017 : 27017
     const nodePort = process.env.NODE_ENV === 'production' ? 28221: 28221
 
     await mongoose.connect(`mongodb://localhost:${mongoPort}/waves`) // mongo up
 
     app.use(express.static(path.join(__dirname, 'frontend')))
-    
+
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: true }))
-    
+
     routes(app)
 
     app.get('*', (req, res) => {
@@ -25,3 +25,5 @@ const bodyParser = require('body-parser')
 
     app.listen(nodePort, () => console.log(`Listening on [::1]:${nodePort}`))
 })()
+
+//18510
