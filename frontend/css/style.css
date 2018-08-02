@@ -10,6 +10,10 @@ body{
     background-attachment: fixed;
 
 }
+.center-align {
+	margin-left:auto;
+	margin-right:auto;
+}
 /*The logo container*/
 .logo {
     margin-top:20vh;
@@ -108,9 +112,6 @@ body{
 }
 .page-footer {
   background-color: #1C2331; }
-.card{
-    min-width: 35vw;
-}
 .social-group {
     margin-top:5vh;
     position:fixed;
