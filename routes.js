@@ -39,6 +39,18 @@ app.get('/:page', (req, res, next) => {
     }
     next()
 })
+app.get('/:page', (req, res, next) => {
+    
+    const page = req.params.page
+
+    if(page == "index" || page == "404") return next()
+
+    const file = path.resolve(__dirname, `frontend/templates/events2/${page}.html`)
+    if(fs.existsSync(file)) {
+        return res.sendFile(file)
+    }
+    next()
+})
 app.post('/event/:eventname', async (req, res) => {
     const event = req.params.eventname
     const validevents = ['smtf', 'fest-registration']
