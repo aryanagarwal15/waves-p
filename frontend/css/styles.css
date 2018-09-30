@@ -565,9 +565,3 @@ video {
 	z-index: 99999999;
 	background: rgba(212, 77, 77, 0);
 }
-
-@media only screen and (max-width: 400px) {
-#rewind, #forward {
-	display: block;
-}
-}
