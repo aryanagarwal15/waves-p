@@ -508,3 +508,66 @@ i.fa:hover{
   }
 }
 
+
+
+/* Video */
+
+#video, #video video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.hide {
+	display: none;
+}
+
+html {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background: black;
+}
+
+body {
+	height: 100%;
+	padding: 0;
+	overflow: auto;
+	margin: 0;
+	-webkit-overflow-scrolling: touch;
+}
+
+video {
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+#rewind {
+	position: absolute;
+	display: none;
+	height: 100%;
+	width: 50%;
+	left: 0;
+	bottom: 0;
+	background: rgba(30, 255, 0, 0);
+	z-index: 99999999;
+}
+
+#forward {
+	position: absolute;
+	width: 50%;
+	display: none;
+	height: 100%;
+	right: 0;
+	bottom: 0;
+	z-index: 99999999;
+	background: rgba(212, 77, 77, 0);
+}
+
+@media only screen and (max-width: 400px) {
+#rewind, #forward {
+	display: block;
+}
+}

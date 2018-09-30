@@ -38,7 +38,7 @@ req2.onload = function () {
 		// Video is now downloaded
 		// and we can set it as source on the video element
 		playerBackward.src = vid;
-		vid.onloadedmetadata = function (_) {
+		playerBackward.onloadedmetadata = function (_) {
 			playerBackward.currentTime = vid.duration;
 		};
 	}
