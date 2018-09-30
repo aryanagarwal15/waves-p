@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700');
+/* 
+###########################################
+#           PRELOADER CSS                 #
+###########################################
+ */
+ #pre-load {
+  padding: 0;
+  margin:0;
+  height:100vh;
+  font-family: 'Orbitron', sans-serif;
+  font-weight:900;
+  letter-spacing:8px;
+  background: #111;
+  color: #000;
+  display: flex;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loader {
+  background: #000;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-self: center;
+  width: 100%;
+  overflow: hidden;
+}
+.loader::before {
+  content: "";
+  background: #000;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.34) 0%, #000 37%);
+  /*   Use the above property to vary the amount of light
+  That is varying the rgba part and after the #000 part.*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: bg-swing 2s ease-in-out 2s infinite alternate;
+}
+
+@keyframes bg-swing {
+  /*    How far the light swings by.  */
+  from {
+      transform: translateX(-15%);
+  }
+  to {
+      transform: translateX(15%);
+  }
+}
+.bulb-wire {
+  position: absolute;
+  left: 50%;
+  height: 42vh;
+  width: 0;
+  border-left: 1px solid #000;
+  transform: rotate(45deg);
+  transform-origin: 0 0;
+  animation: bulb-swing 2s ease-in-out 2s infinite alternate;
+}
+
+@keyframes bulb-swing {
+  from {
+      transform: rotate(55deg);
+  }
+  to {
+      transform: rotate(-55deg);
+  }
+}
+.fa-lightbulb-o {
+  position: relative;
+  text-align: center;
+  top: 44vh;
+  left:2px;
+  font-size: 25px;
+  transform: rotate(180deg);
+}
+.fa-lightbulb-o::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  top: 3px;
+  left: 3px;
+  z-index: -1;
+}
+
+.bulb-glow {
+  background: yellow;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 0, 0) 60%);
+  width: 100px;
+  height: 100px;
+  bottom: -60px;
+  left: 50%;
+  margin-left: -50px;
+  position: absolute;
+  border-radius: 100%;
+  z-index: -1;
+  opacity: 0.25;
+  animation: bulb-light 2s ease-in-out 2s infinite alternate;
+}
+.waves,
+.waves span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 380px;
+  margin-left: -190px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 85px;
+  height: 150px;
+  line-height: 166px;
+  margin-top: -75px;
+  perspective: 1000px;
+}
+/*  The dancing shadow*/
+.waves span::before {
+  content: "loading...";
+  padding: 20px;
+  padding-bottom:60px;
+  padding-left:5px;
+  transform: scaleY(-0.5) skew(15deg);
+  opacity: 0.55;
+  background: linear-gradient(#111 0%, #000 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  text-shadow: 0 0 10px #000;
+  top: 10px;
+  left: 10px;
+  animation: text-shadow 2s linear 2s infinite alternate;
+}
+
+@keyframes text-shadow {
+  0% {
+      transform: scaleY(-0.5) skew(-20deg);
+      left: 40px;
+  }
+  100% {
+      transform: scaleY(-0.5) skew(20deg);
+      left: 0px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .waves span {
+    font-size:45px;
+  }
+  .waves span::before {
+    content:'';
+  }
+  @keyframes bg-swing {
+/*    How far the light swings by.  */
+    from {
+      transform: translateX(-35%);
+    }
+    to {
+      transform: translateX(35%);
+    }
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+}
+*::selection {
+  background: rgba(0, 0, 0, .2);
+  color: #fff;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  overflow: hidden;
+  display: flex;
+  transition: padding 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+a {
+  text-decoration: none;
+  color: #ef3340;
+}
+header {
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+header .nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80px;
+}
+header .nav .title {
+  line-height: 80px;
+  padding: 0 120px;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 900;
+}
+header .nav .toggle {
+  position: absolute;
+  margin: auto;
+  width: 46px;
+  height: 46px;
+  left: 15px;
+  top: 15px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+header .nav .toggle .bar {
+  position: relative;
+  width: 40px;
+  height: 2px;
+  background: #fff;
+}
+header .nav .toggle .bar:before, header .nav .toggle .bar:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  left: 0;
+  transform-origin: center center;
+  transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+}
+header .nav .toggle .bar:before {
+  top: -10px;
+}
+header .nav .toggle .bar:after {
+  bottom: -10px;
+}
+header .nav .toggle.clicked .bar {
+  background: transparent;
+}
+header .nav .toggle.clicked .bar:before, header .nav .toggle.clicked .bar:after {
+  background: #fff;
+}
+header .nav .toggle.clicked .bar:before {
+  transform: rotate(45deg);
+  top: 0;
+}
+header .nav .toggle.clicked .bar:after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+header .nav nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  opacity: 0;
+  z-index: 5;
+  transition: opacity 0.5s ease;
+}
+header .nav nav .showcase {
+  background: #000;
+  flex: 1;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .nav nav .showcase .showcase-container {
+  width: 80%;
+  position: relative;
+  overflow: hidden;
+}
+header .nav nav .showcase .showcase-container:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+header .nav nav .showcase .showcase-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: visible;
+  list-style-type: none;
+  transition: top 0.25s ease;
+}
+header .nav nav .showcase .showcase-menu li {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+header .nav nav .showcase .showcase-menu li.overlay:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: -1;
+}
+header .nav nav .menu {
+  background: #fff;
+  flex: 1;
+}
+header .nav nav .menu ul {
+  width: 100%;
+  padding: 80px 48px 24px 48px;
+  list-style-type: none;
+  max-height: 100%;
+  overflow-y: auto;
+}
+header .nav nav .menu ul::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+header .nav nav .menu ul::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+header .nav nav .menu ul::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .4);
+  border: 0px none #fff;
+  border-radius: 3px;
+}
+header .nav nav .menu ul::-webkit-scrollbar-thumb:hover {
+  background: #000;
+}
+header .nav nav .menu ul::-webkit-scrollbar-thumb:active {
+  background: #000;
+}
+header .nav nav .menu ul::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, .1);
+  border: 0px none #fff;
+  border-radius: 0;
+}
+header .nav nav .menu ul::-webkit-scrollbar-track:hover {
+  background: rgba(0, 0, 0, .1);
+}
+header .nav nav .menu ul::-webkit-scrollbar-track:active {
+  background: rgba(0, 0, 0, .1);
+}
+header .nav nav .menu ul::-webkit-scrollbar-corner {
+  background: transparent;
+}
+header .nav nav .menu ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header .nav nav .menu ul li .number {
+  display: inline-block;
+  padding: 0 0 0 80px;
+  overflow: hidden;
+}
+header .nav nav .menu ul li .number span {
+  display: block;
+  font-size: 48px;
+  font-weight: 400;
+  transition: transform 0.25s ease;
+  transform: translateY(100%);
+}
+header .nav nav .menu ul li a {
+  display: inline-block;
+  font-size: 48px;
+  color: #000;
+  line-height: 1;
+  padding: 24px 0 24px 80px;
+  transition: transform 0.25s ease;
+}
+header .nav nav .menu ul li:hover a {
+  transform: translateX(20px);
+}
+header .nav nav .menu ul li.hover .number span {
+  transform: translateY(0);
+}
+header .nav nav.hidden {
+  display: none;
+}
+header .nav nav.open {
+  opacity: 1;
+}
+header .nav nav.open .showcase {
+  animation: slideInLeft 0.5s cubic-bezier(0.3, 0, 0.3, 1) forwards;
+}
+header .nav nav.open .menu {
+  animation: slideInRight 0.5s cubic-bezier(0.3, 0, 0.3, 1) forwards;
+}
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.main-menu{
+  overflow-x: hidden;
+}
+.content {
+  position: relative;
+  flex: 1;
+  padding: 80px 40px 40px;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/124740/2018-09-28%2009_21_48-https___d2kbkpwf98wmwo.cloudfront.net_videos_hero-lg.mp4.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.content p {
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.content p a {
+  color: #fff;
+  box-shadow: 0 1px 0 0 #ef3340;
+}
+.nav {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.menu{
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.main-menu{
+  display: table-cell;
+  vertical-align: middle;
+}
+.social-footer{
+  position: absolute;
+  left: 0;
+  bottom:0;
+  padding: 20px;
+  z-index: 20;
+}
+.right-footer{
+  position: absolute;
+  right: 0;
+  bottom:0;
+  padding: 20px;
+  z-index: 20;
+}
+.right-footer a{
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px #888;
+  padding: 0.5em 0.6em
+}
+.right-footer a:hover{
+  transform: scale(1.1);
+}
+i.fa {
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px #888;
+  padding: 0.5em 0.6em;
+}
+i.fa:hover{
+  transform: scale(1.1);
+}
+@media only screen and (max-width: 600px) {
+  header .nav nav .menu ul{
+    padding: 0;
+  }
+  .number{
+    display: none!important;
+  }
+  header .nav nav .menu ul li a{
+    padding: 10px;
+  }
+  header .nav nav .menu ul li a{
+    font-size: 24px;
+  }
+}
+
