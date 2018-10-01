@@ -7,8 +7,8 @@ const bodyParser = require('body-parser')
 
 ;(async function() {
 
-    const mongoPort = process.env.NODE_ENV === 'production' ? 18510 : 18510
-    const nodePort = process.env.NODE_ENV === 'production' ? 28221: 28221
+    const mongoPort = process.env.NODE_ENV === 'production' ? 18510 : 27017
+    const nodePort = process.env.NODE_ENV === 'production' ? 28221: 1337
 
     await mongoose.connect(`mongodb://localhost:${mongoPort}/waves`) // mongo up
 

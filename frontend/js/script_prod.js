@@ -38,7 +38,7 @@ req2.onload = function () {
 		// Video is now downloaded
 		// and we can set it as source on the video element
 		playerBackward.src = vid;
-		vid.onloadedmetadata = function (_) {
+		playerBackward.onloadedmetadata = function (_) {
 			playerBackward.currentTime = vid.duration;
 		};
 	}
@@ -46,6 +46,34 @@ req2.onload = function () {
 
 req1.send();
 req2.send();
+
+// @if phone
+
+const isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+}
+
+if(isMobile.any()) {
+	document.getElementById('forward').style.display = 'block'
+	document.getElementById('rewind').style.display = 'block'
+}
 
 // debouncer
 function debounce(func, wait, immediate) {
