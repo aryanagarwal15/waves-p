@@ -13,7 +13,7 @@ var playerBackward = document.getElementById('playerBackward');
 var req1 = new XMLHttpRequest();
 var req2 = new XMLHttpRequest();
 req1.open('GET', 'video/dark.webm', true);
-req2.open('GET', 'video/krad.mp4', true);
+req2.open('GET', 'video/krad.webm', true);
 req1.responseType = 'blob';
 req2.responseType = 'blob';
 

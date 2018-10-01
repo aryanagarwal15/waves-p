@@ -7,6 +7,10 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/styles.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <!-- Bootstrap core CSS -->
+         <link href="/css/bootstrap.min.css" rel="stylesheet">
+         <!-- Material Design Bootstrap -->
+         <link href="/css/mdb.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/register.css"
 		</head>
 		<body style="background-color:black;">
@@ -17,17 +21,19 @@
 					<div class="bar"></div>
 				</div>
 				<nav class="hidden">
-					<div class="showcase">
-						<div class="showcase-container">
-							<ul class="showcase-menu">
-								<li><img src="img/logo2.png" alt="Waves Logo" width="40%"></li>
-								<li><img src="img/fashp.png" alt="Registration" width="100%"></li>
-								<li><img src="img/music.png" alt="Events" width="100%"></li>
-								<li><img src="img/about-visual.png" alt="csr" width="100%"></li>
-								
-							</ul>
-						</div>
-					</div>
+                        <div class="showcase">
+                                <div class="showcase-container">
+                                    <ul class="showcase-menu">
+                                        <li><img src="img/logo-lite.png" alt="Waves Logo"></li>
+                                        <li><img src="img/reg.png" alt="Registration"></li>
+                                        <li><img src="img/events.png" alt="Events"></li>
+                                        <li><img src="img/csr1.png" alt="csr"></li>
+                                        <li><img src="img/sponsors.png" alt="csr"></li>
+                                        <li><img src="img/contact-us.png" alt="csr"></li>
+                                        <li><img src="img/our-team.png" alt="our-team"></li>	
+                                    </ul>
+                                </div>
+                            </div>
 					
 					<div class="menu">
 						<ul class="main-menu">
@@ -44,126 +50,80 @@
 			</div>
 		</header>
 		<div class="main-content">
-                <div class="container right-align">
-                        <div class="row">
-                            <h1 class="white-text" style="font-size:2em">REGISTER</h1>
-                        </div>
-                        <div class="row">
-                            <!-- Registration button -->
-                            <button data-target="modal1" class="white-text modal-trigger waves-effect btn" style="z-index: 999">REGISTER NOW</button>
-                        </div>
-                        <div class="row">
-                            <!-- Any paragraph -->
-                            <p class="flow-text white-text">Register now to be part of one of Asia's best fests! You're
-                                just a few clicks away from being part of Waves 2018.
-                            </p>
-                        </div>
+                <!-- Card -->
+    <div class="card" style="width:40%; margin: auto; margin-top: 100px;">
+
+            <!-- Card body -->
+            <div class="card-body">
+    
+                <!-- Material form register -->
+                <form method="post" action="/irshad">
+                    <p class="h4 text-center py-4">            Registration        </p>
+    
+                    <!-- Material input text -->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        <input type="text" id="materialFormCardNameEx" name="name" class="form-control" placeholder="Your Name">
                     </div>
+    
+                    <!-- Material input email -->
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix grey-text"></i>
+                        <input type="email" id="materialFormCardEmailEx" name="email" class="form-control" placeholder="Your Email">
+                    </div>
+    
+                    <!-- Material input email -->
+                    <div class="md-form">
+                        <i class="fa fa-phone prefix grey-text"></i>
+                        <input type="text" id="materialFormCardNameEx" name="mobile" class="form-control" placeholder="Phone Number">
+                    </div>
+    
+                    <!-- Material input password -->
+                    <div class="md-form">
+                        <i class="fa fa-university prefix grey-text"></i>
+                        <input type="text" id="materialFormCardNameEx" name="collegename" class="form-control" placeholder="College Name">
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-building prefix grey-text"></i>
+                        <input type="text" id="materialFormCardNameEx" name="CITYorEVENT" class="form-control" placeholder="City">
+                    </div>
+                    
+                
+    
+                    <div class="text-center py-4 mt-3">
+                        <button class="btn btn-cyan" type="submit">Register</button>
+                    </div>
+                </form>
+                <!-- Material form register -->
+    
+            </div>
+            <!-- Card body -->
+    
+        </div>
+        <!-- Card -->
 
 		</div>
 
 		<footer>
-			<div class="social-footer">
-				<a href="/"><i class="fa fa-facebook"></i></a>
-				<a href="/"><i class="fa fa-instagram"></i></a>
-				<a href="/"><i class="fa fa-youtube"></i></a>
-				<a href="/"><i class="fa fa-twitter"></i></a>
-			</div>
-			<div class="right-footer">
-				<a href="/">DEVELOPERS</a>
-			</div>
-        </footer>
-        <!-- The modal -->
-        <div id="modal1" class="modal" style="display:none;">
-                <div class="modal-content">
-                    <h4 class="center" >Register</h4>
-                    <form method="POST" action="#">
-                        <div class="container">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <label for="irshad">
-                                        <input type="checkbox" id="irshad">
-                                        <span>Irshad</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <label for="smtf">
-                                        <input type="checkbox" id="smtf">
-                                        <span>SMTF</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col l4">
-                                    <label for="inverse">
-                                        <input type="checkbox" id="inverse">
-                                        <span>InVerse</span>
-                                    </label>
-                                </div>
-                            </div>
-                       
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="name" type="text" class="validate">
-                                    <label for="name">Name</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">smartphone</i>
-                                    <input id="mobile" type="text" class="validate">
-                                    <label for="mobile">Phone</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="material-icons prefix">email</i>
-                                    <input id="email" type="email" class="validate">
-                                    <label for="email">Email</label>
-                                    <span class="helper-text" data-error="Wrong" data-success="Correct"></span>                            
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class='input-field col s12'>
-                                    <i class="material-icons prefix">group</i>
-                                    <input id="college" type="text" class="validate">
-                                    <label for="college">College</label>
-                                </div>
-                            </div>
-                        
-                            <div class="row center">
-                                <button type="submit" class="btn waves-effect waves-light black-text">Submit</button>
-                            </div>
-                        </div>
-                        </div>  
-                    </form>    
+                <div class="social-footer">
+                    <a href="https://www.facebook.com/bitswaves/"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/wavesbits/?hl=en"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCAhDB7L1iNrq11nZe-mwQjw"><i class="fa fa-youtube"></i></a>
+                    <a href="https://twitter.com/bitswaves?lang=en"><i class="fa fa-twitter"></i></a>
                 </div>
-                <div class="modal-footer">
-                    
+                <div class="right-footer">
+                    <a href="/developers">DEVELOPERS</a>
                 </div>
-            </div>
-            <!-- It's the modal don't disturb -->
+            </footer>
+       
 		
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'></script>
         <script src="js/nav.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script>
-            // Required for materialize functioning, as it heavily depends on javascript plugins
-            $(document).ready(function() {
-                $('.tabs').tabs();
-            });
-            $(document).ready(function(){
-                 $('.slider').slider();
-            });
-            $(document).ready(function(){
-                $('.pushpin').pushpin();
-            });
-            $(document).ready(function(){
-                $('.modal').modal();
-            });           
-        </script>
+      <!-- JQuery -->
+      <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="/js/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		</body></html>

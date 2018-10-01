@@ -96,3 +96,28 @@ body {
 .white-text {
     color: white;
 }
+i.fa{
+    left:0;
+}
+.md-form .prefix~input, .md-form .prefix~textarea{
+    margin-left:4.5rem;
+    width: calc(100% - 4.5rem);
+}
+.md-form .prefix{
+    font-size:1.25rem;
+}
+@media only screen and (max-width: 600px) {
+    .card{
+        width: 90%!important;
+        margin-top: 52px!important;
+    }
+    .card-body{
+        padding: 0.5rem;
+    }
+    .social-footer{
+        display: none;
+      }
+      .right-footer{
+        display:none;
+      }
+  }
