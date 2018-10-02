@@ -55,6 +55,7 @@ req1.onload = function () {
 		// Video is now downloaded
 		// and we can set it as source on the video element
 		playerForward.src = vid;
+		
 	}
 };
 

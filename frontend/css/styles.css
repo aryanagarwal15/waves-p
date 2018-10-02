@@ -553,11 +553,11 @@ video {
 	color: white;
 	animation: blinker 2s linear infinite;
 	bottom: 0;
-	z-index: 99999999;
 	-webkit-user-select: none;  
 	-moz-user-select: none;    
 	-ms-user-select: none;      
 	user-select: none;
+	z-index: 4;
 	background: rgba(212, 77, 77, 0);
 }
 
@@ -565,8 +565,6 @@ video {
 	50% {
 	  color: rgba(255,255,255,0);
 	}
-	z-index: 4;
-	background: rgba(212, 77, 77, 0);
 }
 
 ul img{
@@ -587,5 +585,8 @@ ul img{
   }
   ul img{
     width: 100%;
+  }
+  .desk-only{
+    display: none!important;
   }
 }
