@@ -544,11 +544,27 @@ video {
 
 #forward {
 	position: absolute;
-	width: 50%;
+	width: 100%;
 	display: none;
 	height: 100%;
 	right: 0;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	animation: blinker 2s linear infinite;
 	bottom: 0;
+	z-index: 99999999;
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+	background: rgba(212, 77, 77, 0);
+}
+
+@keyframes blinker {
+	50% {
+	  color: rgba(255,255,255,0);
+	}
 	z-index: 4;
 	background: rgba(212, 77, 77, 0);
 }

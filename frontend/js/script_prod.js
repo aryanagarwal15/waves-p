@@ -1,5 +1,33 @@
 'use strict';
 
+// @if phone
+
+var isMobile = {
+	Android: function Android() {
+		return navigator.userAgent.match(/Android/i);
+	},
+	BlackBerry: function BlackBerry() {
+		return navigator.userAgent.match(/BlackBerry/i);
+	},
+	iOS: function iOS() {
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	},
+	Opera: function Opera() {
+		return navigator.userAgent.match(/Opera Mini/i);
+	},
+	Windows: function Windows() {
+		return navigator.userAgent.match(/IEMobile/i);
+	},
+	any: function any() {
+		return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+	}
+};
+
+if (isMobile.any()) {
+	document.getElementById('forward').style.display = 'flex';
+	//document.getElementById('rewind').style.display = 'block'
+}
+
 // constants
 var REWIND = 'REWIND';
 var FORWARD = 'FORWARD';
@@ -12,6 +40,7 @@ var playerBackward = document.getElementById('playerBackward');
 // preloading
 var req1 = new XMLHttpRequest();
 var req2 = new XMLHttpRequest();
+
 req1.open('GET', 'video/dark.webm', true);
 req2.open('GET', 'video/krad.webm', true);
 req1.responseType = 'blob';
@@ -27,6 +56,10 @@ req1.onload = function () {
 		// and we can set it as source on the video element
 		playerForward.src = vid;
 	}
+};
+
+req1.onerror = function (e) {
+	console.log(e);
 };
 
 req2.onload = function () {
@@ -45,34 +78,10 @@ req2.onload = function () {
 };
 
 req1.send();
-req2.send();
 
-// @if phone
-
-const isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-}
-
-if(isMobile.any()) {
-	document.getElementById('forward').style.display = 'block'
-	document.getElementById('rewind').style.display = 'block'
+if (!isMobile.any()) {
+	// don't need rewind video if on phone
+	req2.send();
 }
 
 // debouncer
@@ -183,6 +192,7 @@ var ts = void 0,
     touchduration = 20,
     revTimer = void 0,
     forTimer = void 0;
+var isHelperTextAvailable = true;
 
 document.getElementById('forward').addEventListener('touchstart', function (e) {
 	console.log('Touching forward');
@@ -193,8 +203,15 @@ document.getElementById('forward').addEventListener('touchstart', function (e) {
 		event.initEvent("wheel", false, true);
 		container.dispatchEvent(event);
 	}, touchduration);
+
+	if (isHelperTextAvailable) {
+		var el = document.getElementById('forward');
+		el.innerText = '';
+		isHelperTextAvailable = false;
+	}
 });
 
+/* Disabling rewind on mobile devices
 document.getElementById('rewind').addEventListener('touchstart', function (e) {
 	console.log('Touching rewind');
 	revTimer = setInterval(function (_) {
@@ -205,6 +222,7 @@ document.getElementById('rewind').addEventListener('touchstart', function (e) {
 		container.dispatchEvent(event);
 	}, touchduration);
 });
+*/
 
 document.getElementById('forward').addEventListener('touchend', function (e) {
 	console.log('Touching forward over');
@@ -212,117 +230,104 @@ document.getElementById('forward').addEventListener('touchend', function (e) {
 	clearInterval(forTimer);
 });
 
+/* Disabling rewind on mobile devices
 document.getElementById('rewind').addEventListener('touchend', function (e) {
 	console.log('Touching rewind over');
 
 	clearInterval(revTimer);
-});
+});*/
 
+//if(!isMobile.any()) {
+// if it's not a phone, add a scrolling event
 container.addEventListener('wheel', debounce(handleScroll, 15, true), false);
-
-/*
-document.addEventListener('touchstart', e => {
-	ts = e.touches[0].clientY
-}, false)
-
-document.addEventListener('touchmove', e => {
-	var event = new CustomEvent('wheel');
+//}
 
 
-	var te = e.changedTouches[0].clientY
-    if (ts > te) {
-		console.log('down');
-		event.forcedDelta = -600
-    } else {
-		console.log('up');
-		event.forcedDelta = 600
-	}
-
-	event.initEvent("wheel", false, true)
-	container.dispatchEvent(event)
-	
-}, false)*/
-
-async function handleScroll(e) {
-	var delta = (e.wheelDeltaY || e.forcedDelta) / 200; // forcedDelta => touchmove => mobile
-
-	console.log('delta = ', e.wheelDeltaY);
-
-	var seekDirection = delta > 0 ? REWIND : FORWARD;
-
-	/*if(mainSEEK === FORWARD && seekDirection === REWIND) {
- 	console.log(parseFloat(playerBackward.querySelector('source').getAttribute('src').split('#t=')[1]), 'TIME')
- 	playerBackward.currentTime = parseFloat(playerBackward.querySelector('source').getAttribute('src').split('#t=')[1])
- //	playerForward.load()
- 	mainSEEK = REWIND
- } else if(mainSEEK === REWIND && seekDirection === FORWARD) {
- 	playerForward.currentTime = parseFloat(playerForward.querySelector('source').getAttribute('src').split('#t=')[1])
- //	playerBackward.load()
- 	mainSEEK = FORWARD
- }*/
-
-	if (seekDirection === REWIND) {
-		console.log('REWINDING');
-		//playerBackward.currentTime = playerForward.duration - playerForward.currentTime
-		activePlayer = playerBackward;
-		document.getElementById('playerBackward').classList.remove('hide');
-		document.getElementById('playerForward').classList.add('hide');
-	} else {
-		//playerForward.currentTime = playerBackward.duration - playerBackward.currentTime
-		activePlayer = playerForward;
-		document.getElementById('playerForward').classList.remove('hide');
-		document.getElementById('playerBackward').classList.add('hide');
-	}
-
-	await activePlayer.play();
-
-	clearTimeout(seekTimer);
-	//console.log('Requesting and setting speed')
+function handleScroll(e) {
+	var delta, seekDirection;
+	return Promise.resolve().then(function () {
+		delta = (e.wheelDeltaY || e.forcedDelta) / 200; // forcedDelta => touchmove => mobile
 
 
-	//if(delta < 0) {
-	// scrolling forward, +ve playbackrate
-	if (isNaN(videoInfo.speed)) videoInfo.speed = 0;
-	videoInfo.speed += Math.abs(delta);
-	//} else {
-	// scrolling back but -ve playback not allowed
-	//	videoInfo.negSpeed += Math.abs(delta)
-	//}
-	//console.log('Speed set')
+		if (!(!!e.forcedDelta && !isMobile.any())) {
+			return Promise.resolve().then(function () {
 
-	seekTimer = setTimeout(function () {
-		var intv = setInterval(function () {
-			//console.log('Requesting speed')
-			var deacceleration = void 0;
-			var speed = videoInfo.speed;
+				console.log('delta = ', delta);
 
-			if (speed > 2) {
-				// too much speed, reduce fast
-				deacceleration = 0.1 * speed;
-			} else if (speed > 1.5) {
-				deacceleration = 0.07 * speed;
-			} else {
-				deacceleration = 0.05 * speed;
-			}
-			//videoInfo.speed -= 0.05*videoInfo.speed
-			//if(delta < 0) {
-			//	console.log('Forward deacc')
-			videoInfo.speed = speed - deacceleration;
-			//	} else {
-			//		console.log('Rewind deacc')
-			//		rewind(speed - deacceleration)
-			videoInfo.negSpeed = speed - deacceleration;
-			//	}
-			//	console.log('Requesting speed 2')
-			if (videoInfo.speed < 0.07) {
-				//		console.log('Setting speed 2')
-				videoInfo.speed = 0;
-				clearInterval(intv);
-			} else {
-				//console.log(videoInfo.speed)
-			}
-		}, 10);
-	}, 50);
+				seekDirection = delta > 0 ? REWIND : FORWARD;
 
-	//console.log(e.wheelDeltaY)
+
+				if (seekDirection === REWIND) {
+					console.log('REWINDING');
+					//playerBackward.currentTime = playerForward.duration - playerForward.currentTime
+					activePlayer = playerBackward;
+					document.getElementById('playerBackward').classList.remove('hide');
+					document.getElementById('playerForward').classList.add('hide');
+				} else {
+					//playerForward.currentTime = playerBackward.duration - playerBackward.currentTime
+					activePlayer = playerForward;
+					document.getElementById('playerForward').classList.remove('hide');
+					document.getElementById('playerBackward').classList.add('hide');
+				}
+
+				return Promise.resolve().then(function () {
+					return activePlayer.play();
+				}).catch(function (e) {
+					console.log('Safari?', e);
+				});
+			}).then(function () {
+
+				clearTimeout(seekTimer);
+				//console.log('Requesting and setting speed')
+
+
+				//if(delta < 0) {
+				// scrolling forward, +ve playbackrate
+				if (isNaN(videoInfo.speed)) {
+					videoInfo.speed = 0;
+				}videoInfo.speed += Math.abs(delta);
+				//} else {
+				// scrolling back but -ve playback not allowed
+				//	videoInfo.negSpeed += Math.abs(delta)
+				//}
+				//console.log('Speed set')
+
+				seekTimer = setTimeout(function () {
+					var intv = setInterval(function () {
+						//console.log('Requesting speed')
+						var deacceleration = void 0;
+						var speed = videoInfo.speed;
+
+						if (speed > 2) {
+							// too much speed, reduce fast
+							deacceleration = 0.1 * speed;
+						} else if (speed > 1.5) {
+							deacceleration = 0.07 * speed;
+						} else {
+							deacceleration = 0.05 * speed;
+						}
+						//videoInfo.speed -= 0.05*videoInfo.speed
+						//if(delta < 0) {
+						//	console.log('Forward deacc')
+						videoInfo.speed = speed - deacceleration;
+						//	} else {
+						//		console.log('Rewind deacc')
+						//		rewind(speed - deacceleration)
+						videoInfo.negSpeed = speed - deacceleration;
+						//	}
+						//	console.log('Requesting speed 2')
+						if (videoInfo.speed < 0.07) {
+							//		console.log('Setting speed 2')
+							videoInfo.speed = 0;
+							clearInterval(intv);
+						} else {
+							//console.log(videoInfo.speed)
+						}
+					}, 10);
+				}, 50);
+
+				//console.log(e.wheelDeltaY)
+			});
+		}
+	}).then(function () {});
 }

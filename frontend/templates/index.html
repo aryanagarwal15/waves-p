@@ -91,16 +91,17 @@
             }
 		</script>
 
-<div id="rewind"></div>
-<div id="forward"></div>
+<div id="forward">Long Tap Here To Proceed</div>
+<!--<div id="forward"></div>-->
 
 <div id="video">
-<video id="playerForward" muted="muted" preload>
+<video id="playerForward" muted="muted" preload type="video/mp4">
 </video>
 
-<video id="playerBackward" class="hide" muted="muted" preload>
+<video id="playerBackward" class="hide" muted="muted" preload type="video/mp4">
 </video>
 </div>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 <script src="/js/script_prod.js"></script>
 
 		</body>
