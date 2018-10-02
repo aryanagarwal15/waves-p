@@ -168,7 +168,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
   font-family: 'Noto Sans', sans-serif;
 }
 *::selection {
@@ -389,7 +389,7 @@ header .nav nav .menu ul li a {
   font-size: 48px;
   color: #000;
   line-height: 1;
-  padding: 24px 0 24px 80px;
+  padding: 15px 0 15px 80px;
   transition: transform 0.25s ease;
 }
 header .nav nav .menu ul li:hover a {
@@ -493,20 +493,7 @@ i.fa {
 i.fa:hover{
   transform: scale(1.1);
 }
-@media only screen and (max-width: 600px) {
-  header .nav nav .menu ul{
-    padding: 0;
-  }
-  .number{
-    display: none!important;
-  }
-  header .nav nav .menu ul li a{
-    padding: 10px;
-  }
-  header .nav nav .menu ul li a{
-    font-size: 24px;
-  }
-}
+
 
 
 
@@ -552,7 +539,7 @@ video {
 	left: 0;
 	bottom: 0;
 	background: rgba(30, 255, 0, 0);
-	z-index: 99999999;
+	z-index: 4;
 }
 
 #forward {
@@ -578,4 +565,27 @@ video {
 	50% {
 	  color: rgba(255,255,255,0);
 	}
+	z-index: 4;
+	background: rgba(212, 77, 77, 0);
+}
+
+ul img{
+  width: 60%;
+}
+@media only screen and (max-width: 600px) {
+  header .nav nav .menu ul{
+    padding: 0;
+  }
+  .number{
+    display: none!important;
+  }
+  header .nav nav .menu ul li a{
+    padding: 10px;
+  }
+  header .nav nav .menu ul li a{
+    font-size: 24px;
+  }
+  ul img{
+    width: 100%;
+  }
 }
