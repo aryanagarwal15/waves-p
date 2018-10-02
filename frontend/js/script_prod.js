@@ -49,6 +49,8 @@ req2.responseType = 'blob';
 req1.onload = function () {
 	// Onload is triggered even on 404
 	// so we need to check the status code
+	
+	document.getElementById('pre-load').style.display = 'none';
 	if (this.status === 200) {
 		var videoBlob = this.response;
 		var vid = URL.createObjectURL(videoBlob); // IE10+
