@@ -560,6 +560,9 @@ video {
 	z-index: 4;
 	background: rgba(212, 77, 77, 0);
 }
+#forward span{
+margin-top: 70%;
+}
 
 @keyframes blinker {
 	50% {
