@@ -144,7 +144,7 @@ function handleScroll(e) {
 		delta = e.forcedDelta; // forcedDelta => touchmove => mobile
 
 		seekDirection = delta > 0 ? REWIND : FORWARD;
-		return !activePlayer.paused && activePlayer.play();
+		return activePlayer.paused && activePlayer.play();
 	}).then(function () {
 
 		clearTimeout(seekTimer);
