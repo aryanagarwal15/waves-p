@@ -1,14 +1,11 @@
 body{
-	 background-image: url("../img/back.jpg");
-	  /* Full height */
-    height: 100%; 
+    background: #000000; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #000000, #434343);
+    background: linear-gradient(to left, #000000, #434343);
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-
+}
+*{
+    color: #fff;
 }
 /*The logo container*/
 .logo {
