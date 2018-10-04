@@ -544,21 +544,10 @@ video {
        object-fit: cover;
 }
 
-#rewind {
-	position: absolute;
-	display: none;
-	height: 100%;
-	width: 50%;
-	left: 0;
-	bottom: 0;
-	background: rgba(30, 255, 0, 0);
-	z-index: 99999999;
-}
-
 #forward {
 	position: absolute;
 	width: 100%;
-	display: none;
+	display: flex;
 	height: 100%;
 	right: 0;
 	justify-content: center;
