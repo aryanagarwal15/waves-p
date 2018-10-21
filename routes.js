@@ -91,7 +91,7 @@ app.post('/irshad', async (req, res) => {
     if(customValidation(name, email, collegename, mobile)) { // TODO: Implement this validation
         const result = await Irshad.addEntry(name, email, collegename, mobile, CITYorEVENT, poem)
         if(result.status == 'error') return res.status(500).json({ status: 'error', message: result.message })
-        return res.redirect('/entrySuccess')
+        return res.redirect('/entrySuccessnew')
     }
 })
 
